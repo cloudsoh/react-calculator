@@ -1,0 +1,57 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-heading{
+  color: #61dafb;
+}
+
+.Calculator {
+  width: 50%;
+  background: #61dafb;
+  color: white;
+  padding: 2em;
+  border-radius: 1em;
+  font-size: calc(15px + 2vmin);
+  display: flex;
+  flex-flow: column;
+
+  &-screen {
+    text-align: right;
+    background: rgba($color: #282c34 , $alpha: 0.5);
+    padding: 0.5em;
+    border: none;
+    font-size: 1.5em;
+    color: white;
+    margin-bottom: 0.5em;
+    flex-grow: 1;
+
+    &:active {
+      border: none;
+    }
+  }
+
+  &-keyboard {
+    display: grid;
+    grid-template: auto / auto auto auto auto;
+    grid-gap: 0.2em;
+  }
+
+  &-button {
+    background: rgba($color: #282c34 , $alpha: 0.5);
+    color: white;
+    font-size: 2em;
+    flex-grow: 1;
+  }
+}
