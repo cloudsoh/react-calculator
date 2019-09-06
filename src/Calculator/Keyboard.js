@@ -68,16 +68,16 @@ export class Keyboard extends React.Component {
         const layout = [
             [
                 {
-                    symbol: 1,
-                    fn: () => this.inputNumber(1)
+                    symbol: 7,
+                    fn: () => this.inputNumber(7)
                 },
                 {
-                    symbol: 2,
-                    fn: () => this.inputNumber(2)
+                    symbol: 8,
+                    fn: () => this.inputNumber(8)
                 },
                 {
-                    symbol: 3,
-                    fn: () => this.inputNumber(3)
+                    symbol: 9,
+                    fn: () => this.inputNumber(9)
                 },
                 {
                     symbol: '÷',
@@ -97,19 +97,19 @@ export class Keyboard extends React.Component {
                 },
                 {
                     symbol: 'x',
-                    fn: () => this.addAction(this.multiple)
+                    fn: () => this.addAction(this.multiply)
                 },
                 {
-                    symbol: 7,
-                    fn: () => this.inputNumber(7)
+                    symbol: 1,
+                    fn: () => this.inputNumber(1)
                 },
                 {
-                    symbol: 8,
-                    fn: () => this.inputNumber(8)
+                    symbol: 2,
+                    fn: () => this.inputNumber(2)
                 },
                 {
-                    symbol: 9,
-                    fn: () => this.inputNumber(9)
+                    symbol: 3,
+                    fn: () => this.inputNumber(3)
                 },
                 {
                     symbol: '-',
