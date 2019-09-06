@@ -1,6 +1,25 @@
 import React from 'react'
 import { Button } from './Button'
 
+const layout = [
+    '7',
+    '8',
+    '9',
+    '÷',
+    '4',
+    '5',
+    '6',
+    'x',
+    '1',
+    '2',
+    '3',
+    '-',
+    'c',
+    '0',
+    '.',
+    '+',
+]
+
 export class Keyboard extends React.Component {
     constructor(props) {
         super(props)
@@ -10,7 +29,13 @@ export class Keyboard extends React.Component {
             addDot: false
         }
     }
-    interpretKey = ({ key }) => {
+    interpretKey = async (event) => {
+        this.interpretSymbol(event.key)
+    }
+    onKeyboardPress = (event) => {
+        this.interpretSymbol(event.target.getAttribute('value'))
+    }
+    interpretSymbol = (key) => {
         switch (key) {
             case '1': 
             case '2': 
@@ -34,9 +59,11 @@ export class Keyboard extends React.Component {
                 this.addAction(this.minus)
                 break
             case '*':
+            case 'x':
                 this.addAction(this.multiply)
                 break
             case '/':
+            case '÷':
                 this.addAction(this.divide)
                 break
             case 'c':
@@ -120,81 +147,11 @@ export class Keyboard extends React.Component {
         return this.props.oldNumber + this.props.newNumber
     }
     render() {
-        const layout = [
-            [
-                {
-                    symbol: 7,
-                    fn: () => this.inputNumber(7)
-                },
-                {
-                    symbol: 8,
-                    fn: () => this.inputNumber(8)
-                },
-                {
-                    symbol: 9,
-                    fn: () => this.inputNumber(9)
-                },
-                {
-                    symbol: '÷',
-                    fn: () => this.addAction(this.divide)
-                },
-                {
-                    symbol: 4,
-                    fn: () => this.inputNumber(4)
-                },
-                {
-                    symbol: 5,
-                    fn: () => this.inputNumber(5)
-                },
-                {
-                    symbol: 6,
-                    fn: () => this.inputNumber(6)
-                },
-                {
-                    symbol: 'x',
-                    fn: () => this.addAction(this.multiply)
-                },
-                {
-                    symbol: 1,
-                    fn: () => this.inputNumber(1)
-                },
-                {
-                    symbol: 2,
-                    fn: () => this.inputNumber(2)
-                },
-                {
-                    symbol: 3,
-                    fn: () => this.inputNumber(3)
-                },
-                {
-                    symbol: '-',
-                    fn: () => this.addAction(this.minus)
-                },
-                {
-                    symbol: 'c',
-                    fn: this.clearCalculator
-                },
-                {
-                    symbol: 0,
-                    fn: () => this.inputNumber(0)
-                },
-                {
-                    symbol: '.',
-                    fn: this.addDot
-                },
-                {
-                    symbol: '+',
-                    fn: () => this.addAction(this.add)
-                },
-            ]
-        ]
         return (
-            <div className="Calculator-keyboard">
+            <div className="Calculator-keyboard" onClick={this.onKeyboardPress}>
                 {
-                    layout.map((row) => 
-                        row.map(({ fn, symbol }) => 
-                            <Button key={symbol} onClick={fn}>{symbol}</Button>
-                        )
+                    layout.map((symbol) => 
+                        <div className="Calculator-button" key={symbol} value={symbol}>{symbol}</div>
                     )
                 }
             </div>

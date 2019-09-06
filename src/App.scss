@@ -9,7 +9,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(8px + 2vmin);
   color: white;
 }
 
@@ -18,12 +18,12 @@
 }
 
 .Calculator {
-  width: 50%;
+  width: 10em;
   background: #61dafb;
   color: white;
   padding: 2em;
   border-radius: 1em;
-  font-size: calc(15px + 2vmin);
+  font-size: 1.5em;
   display: flex;
   flex-flow: column;
 
