@@ -10,6 +10,51 @@ export class Keyboard extends React.Component {
             addDot: false
         }
     }
+    interpretKey = ({ key }) => {
+        switch (key) {
+            case '1': 
+            case '2': 
+            case '3': 
+            case '4': 
+            case '5': 
+            case '6': 
+            case '7': 
+            case '8': 
+            case '9': 
+            case '0': 
+                this.inputNumber(key)
+                break
+            case '.':
+                this.addDot()
+                break
+            case '+':
+                this.addAction(this.add)
+                break
+            case '-':
+                this.addAction(this.minus)
+                break
+            case '*':
+                this.addAction(this.multiply)
+                break
+            case '/':
+                this.addAction(this.divide)
+                break
+            case 'c':
+            case 'Backspace':
+                this.clearCalculator()
+                break
+            case 'Enter':
+                this.addAction(null)
+                break
+            default:
+        }
+    }
+    componentDidMount() {
+        document.addEventListener('keydown', this.interpretKey) 
+    }
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.interpretKey)
+    }
     inputNumber(num) {
         let number = 0;
         const { newNumber } = this.props
@@ -55,7 +100,7 @@ export class Keyboard extends React.Component {
     divide = () => {
         return this.props.oldNumber / this.props.newNumber
     }
-    multiple = () => {
+    multiply = () => {
         return this.props.oldNumber * this.props.newNumber
     }
     minus = () => {
