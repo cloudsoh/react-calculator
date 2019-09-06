@@ -40,8 +40,11 @@ export class Keyboard extends React.Component {
                 this.addAction(this.divide)
                 break
             case 'c':
-            case 'Backspace':
+            case 'Escape':
                 this.clearCalculator()
+                break
+            case 'Backspace':
+                this.backSpace()
                 break
             case 'Enter':
                 this.addAction(null)
@@ -78,6 +81,13 @@ export class Keyboard extends React.Component {
         this.setState({
             action: null
         })
+    }
+    backSpace = () => {
+        if (this.props.newNumber == null) {
+            return;
+        }
+        const newNumber = this.props.newNumber.toString().slice(0, -1)
+        this.props.setNewNumber(newNumber === '' ? null : newNumber)
     }
     addAction = (action) => {
         if (this.props.newNumber !== null) {
